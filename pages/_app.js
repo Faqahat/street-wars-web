@@ -145,7 +145,7 @@ useEffect(()=>{
                     
                 </Link>
                 </Tippy>
-                <div className="flex mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 ">
+                <div className="flex  items-center  mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 ">
              
                   
               
@@ -154,11 +154,13 @@ useEffect(()=>{
                     : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
                 }
                 
+               
+                    <p className="text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs">Server is Online.</p> 
+                  
+                     <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs"> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
+                    <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
+                    </div>
                 
-                <p className="text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs">Server is Online.</p> 
-                <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs"> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
-                <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
-                </div>
                 
 
               
