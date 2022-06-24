@@ -20,26 +20,29 @@ function MyApp({ Component, pageProps }) {
   
   let [bg,setBg] = useState(0)
   let [info,setInfo] = useState(false)
- 
+ const fetchInfo = () =>{
+  fetch("/api/info")
+  .then(data => data.json())
+  .then(obj =>
+{      if(obj === "error") {
+console.log(obj)
+return setInfo(false)}
+   setInfo(obj)
+   console.log(obj)
+  }
+ )
+ .catch(function(error) {
+    console.log(error)
+    setInfo(false)
+    
+ })
+ }
 
 useEffect(()=>{
+  fetchInfo();
   const intervalId = setInterval(() => {  //assign interval to a variable to clear it.
+   fetchInfo();
    
-    fetch("/api/info")
-      .then(data => data.json())
-      .then(obj =>
-{      if(obj === "error") {
-  console.log(obj)
-  return setInfo(false)}
-       setInfo(obj)
-       console.log(obj)
-      }
-     )
-     .catch(function(error) {
-        console.log(error)
-        setInfo(false)
-        
-     })
   }, 10000)
 
   return () => clearInterval(intervalId); //This is important
@@ -85,7 +88,7 @@ useEffect(()=>{
         
             
             
-              
+               
               
               <div className="border-solid border-2 bg-[#FFFAEB] border-[#FFC400]  flex items-center p-2 sm:mt-8  md:mt-12 lg:mt-1 lg:w-auto md:mb-6 ">
                 <div className='w-10' ><Image src={caution} alt="" /></div> <span className="text-xs ml-2">We are currently in process of restructuring the server and community</span>
@@ -113,7 +116,7 @@ useEffect(()=>{
                 Los Santos Street Wars is, and always, will be a community first and a game server second. 
                 We are dedicated to fostering an environment with a member-centric approach where all players
                 have equal potential for in game success and community recognition. Operating since 2011 LS Street Wars is one of the few remaining Gang Wars Server on SA:MP.
-                We plan to keep the server running for now and in the near future. We are closely following OpenMP community and in process of migrating our server to OpenMP. Join our discord server to stay updated. 
+                We plan to keep the server running for now and in the near future. We are closely following OpenMP community and in process of migrating our server to OpenMP. Join our discord server to stay updated. {bg}
               </p>
               <p>
 
@@ -146,28 +149,34 @@ useEffect(()=>{
     </div>
     <div 
  
-    className={"h-full w-full   md:bg-no-repeat bg-cover bg-red-200 " + bg === 1 ? " bg-[url('/static/hero1.jpg')] bg-cover grayscale  " : bg === 2 ? " bg-[url('/static/hero2.jpg')]  bg-cover bg-center grayscale" : bg === 3 ? " bg-[url('/static/hero3.jpg')] bg-cover grayscale bg-right" : bg === 4 ? " bg-[url('/static/hero4.jpg')] bg-cover grayscale bg-center" : " bg-[url('/static/hero2.jpg')] grayscale bg-cover" }>
-      <div className=" hidden ml-[60%] mr-[20px] lg:flex object-right-top">
-        <button className=" bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8">
+    className="h-full w-full relative grayscale" 
+    
+    // onClick={() => {
+    //   setBg(randomIntFromInterval(1,4))
+    // }}
+    >
+
+  <Image 
+            src={bg === 1 ? hero1 : bg === 2 ? hero2 : bg === 3 ? hero3  : bg=== 4 ? hero4 : hero4  }
+            layout="fill"
+            objectPosition="center"
+            objectFit="cover"
+            className=' -z-50'
+            quality={70}
+            placeholder="blur"
+     />
+      <div className=" hidden ml-[60%] mr-[20px] lg:flex object-right-top transform">
+        <button className="btn bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8">
           Join Discord
         </button>
-        <Tippy content= "Coming Soon" trigger='click'>
-        <button className="bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">
+        <Tippy content= "Coming Soon" trigger='click' 
+        >
+        <button className="btn bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">
           UCP
         </button>
         </Tippy>
       </div>
-      <div className='hidden  mt-6   lg:hidden   sm:mt-8 sm:h-64 sm:w-full md:mt-0 md:h-full md:w-full lg:h-auto lg:mt-14 lg:rounded-full sm:object-cover object-center    '>
-        <Image 
-              layout=''
-              src={hero1}
-            
-              className=" lg:rounded-full"
-              placeholder='blur' 
-              alt=""
-        />
-  {/*   LG*/}
-      </div>     
+    
    
     </div>
   </div>

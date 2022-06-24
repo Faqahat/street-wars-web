@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-const bSq = require ("better-samp-query");
+
 
 const dgram = require('dgram')
 
@@ -29,7 +29,7 @@ function query(options) {
     if (!isFinite(options.port) || options.port < 1 || options.port > 65535)
       return reject('Invalid port')
 
-    const response = {}
+      let response = {}
 
     request(options, 'i')
       .then((information) => {
@@ -107,8 +107,8 @@ function request(options, opcode) {
 
         message = message.slice(11)
 
-        const object = {}
-        const array = []
+        let object = {}
+        let array = []
         let strlen = 0
         let offset = 0
 
@@ -168,7 +168,7 @@ function request(options, opcode) {
           }
 
           if (opcode == 'd') {
-            const playercount = message.readUInt16LE(offset)
+            let playercount = message.readUInt16LE(offset)
             offset += 2
 
             let player = undefined
@@ -210,8 +210,8 @@ function decode(buffer) {
   for (let i = 0; i < 128; i++) charset += String.fromCharCode(i)
   charset +=
     '€�‚ƒ„…†‡�‰�‹�����‘’“”•–—�™�›���� ΅Ά£¤¥¦§¨©�«¬­®―°±²³΄µ¶·ΈΉΊ»Ό½ΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡ�ΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώ�'
-  const charsetBuffer = Buffer.from(charset, 'ucs2')
-  const decodeBuffer = Buffer.alloc(buffer.length * 2)
+    let charsetBuffer = Buffer.from(charset, 'ucs2')
+    let decodeBuffer = Buffer.alloc(buffer.length * 2)
   for (let i = 0; i < buffer.length; i++) {
     decodeBuffer[i * 2] = charsetBuffer[buffer[i] * 2]
     decodeBuffer[i * 2 + 1] = charsetBuffer[buffer[i] * 2 + 1]
