@@ -6,10 +6,13 @@ import hero3 from "../public/static/hero3.jpg"
 import hero4 from "../public/static/hero4.jpg"
 import caution from "../img/caution.png"
 import onlineIcon from "../img/onlineIcon.png"
+import loadingIcon from "../public/static/warning.png"
 import Image from 'next/image'
 import { useState ,useEffect } from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import Link from 'next/link';    
+import { BsArrowRight as Right } from 'react-icons/bs';
 
 function MyApp({ Component, pageProps }) {
   function randomIntFromInterval(min, max) { // min and max included 
@@ -20,20 +23,25 @@ function MyApp({ Component, pageProps }) {
   
   let [bg,setBg] = useState(0)
   let [info,setInfo] = useState(false)
+  let [isLoaded, setIsLoaded] = useState(true)
  const fetchInfo = () =>{
   fetch("/api/info")
   .then(data => data.json())
   .then(obj =>
-{      if(obj === "error") {
-console.log(obj)
-return setInfo(false)}
-   setInfo(obj)
-   console.log(obj)
+{   
+   if(obj.maxplayers) 
+   {
+    setInfo(obj)
+    return setIsLoaded(true)
+   }
+   else   return setIsLoaded(false) 
+   
   }
  )
  .catch(function(error) {
     console.log(error)
-    setInfo(false)
+
+    setIsLoaded(false)
     
  })
  }
@@ -123,20 +131,33 @@ useEffect(()=>{
               </p>
               <div className="mt-4 sm:mt-6  ">
               <Tippy content="Connect to The Server">
-                <div
-                  className="  py-4  mb-5 px-6 cursor-pointer inline-block  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base sm:mr-32 md:text-2xl md:mb-4 lg:mt-6   ">
-                Connect Now
-                 <i className='ml-3'></i>
-                </div>
+                <Link  href="samp://217.182.46.69:7777" >
+                    <button
+                              className="  max-w-xl py-4   mb-5 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base sm:mr-32 md:text-2xl md:mb-4 lg:mt-6   ">
+             
+
+                    <span className=' flex justify-center items-center lg:text-lg md:text-sm sm:text-xs align-middle '>Connect Now <Right className='ml-2 '/></span> 
+                    
+
+                    </button>
+
+                  
+                    
+                </Link>
                 </Tippy>
                 <div className="flex mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 ">
              
                   
               
-
-                {info.maxplayers ? <><span className= "w-4"> <Image  src={onlineIcon}   /></span> <p className="text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs">Server is Online.</p></>    : <></> } 
-                {info.online > 0 ?< ><p className= " text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs"> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p></> :<></>}
-                                    <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
+                {isLoaded ? 
+                      <span className= "w-4"> <Image  src={onlineIcon}   /></span> //yellow
+                    : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
+                }
+                
+                
+                <p className="text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs">Server is Online.</p> 
+                <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs"> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
+                <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
                 </div>
                 
 
@@ -166,9 +187,14 @@ useEffect(()=>{
             placeholder="blur"
      />
       <div className=" hidden ml-[60%] mr-[20px] lg:flex object-right-top transform">
+
+         <Link  href="https://discord.gg/Zt6HnHbwRc" >
+        
         <button className="btn bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8">
-          Join Discord
+         Join Discords
         </button>
+        
+        </Link>
         <Tippy content= "Coming Soon" trigger='click' 
         >
         <button className="btn bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">
