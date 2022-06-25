@@ -5,14 +5,26 @@ module.exports = {
 
   theme: {
     extend: {
-      backgroundImage: {
-        'hero': "url('/static/hero1.jpg')",
-        'hero2': "url('/static/hero2.jpg')",
-        'hero3': "url('/static/hero3.jpg')",
-        'hero4': "url('/static/hero4.jpg')",
+      colors:
+      {
+        brand:"#0fa9e6",
+      },
+     
+      fontFamily:
+      {
+        'Grotesk': 'Grotesk-wide'
+      },
 
-    }
+      fontFamily:
+      {
+        'Archivo': 'Archivo Black'
+      },
+      fontFamily:
+      {
+        'TimesNewRoman':'TimesNewRoman'
+      }
+
     },
   },
-  plugins: [],
+  plugins: [ require('tailwind-scrollbar')],
 }

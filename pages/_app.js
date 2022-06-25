@@ -17,7 +17,7 @@ import Head from 'next/head';
 import { BsArrowRight as RightIcon } from 'react-icons/bs';
 import { BiCopy as CopyIcon } from 'react-icons/bi';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { Tooltip, Button, Grid } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 
 function MyApp({ Component, pageProps }) {
   function randomIntFromInterval(min, max) { // min and max included 
@@ -68,24 +68,17 @@ useEffect(()=>{
  useEffect(() => setBg(randomIntFromInterval(1,4)),[])
 
   return (
-<div className="cursor-default h-screen">
+<div className="cursor-default h-screen  scrollbar-thin ">
     <Head>
-  
-    
-    <title>Los Santos Street Wars</title>
+      <title>Los Santos Street Wars</title>
     </Head>
-
-  <div className="grid md:grid-cols-2 lg:grid-cols-2 h-full">
-  
-    <div className="lg:col-span-1">
-    <img src="/static/logo.png" alt=""    className='h-24 mx-auto mt-6 lg:hidden md:mb-5'   /> 
+  <div className="grid md:grid-cols-2  min-h-screen ">
+    <div className="col-span-1">
+        <img src="/static/logo.png" alt=""    className='h-24 mx-auto mt-6 lg:hidden md:mb-5'   /> 
         <div className="bg-white   ">
-   
-          <div className="lg:max-w-xl">
-        
+          <div className="max-w-full">
             <div className="sm:ml-20 md:ml-8 md:flex  lg:show text-center">
    
-         
               <button className=" lg:hidden bg-black text-white text-xl font-bold border-white  p-3  sm:w-44 sm:mr-20 md:text-center md:w-36   md:mr-1 lg:w-72 lg:mr-10  h-14 mt-8">
                 Join Discord
               </button>
@@ -99,13 +92,13 @@ useEffect(()=>{
             <Image src={bg == 1 ? hero1 : bg == 2 ? hero2 : bg == 3 ? hero3 : bg == 4 ? hero4 : hero1} alt="" placeholder='blur' className=" grayscale  min-h-[50%]"/> { /* Phone View */ }
           </div>
 
-              <div className='hidden  lg:block  h-24 absolute w-24 ml-20 mt-3'> {/* LG Logo */}
+              <div className='hidden  lg:block  h-24  w-24 ml-20 mt-3'> {/* LG Logo */}
                   <Image src={logo} alt=""   layout="responsive" className=" "  />
               </div>
 
      
          
-          <div      className="px-6 mt-12  max-w-md  sm:max-w-xl lg:px-0 lg:py-24 lg:max-w-full  lg:ml-20">
+          <div className="mt-12  lg:px-0 min-h-screen  ml-10 mr-10 lg:mr-24 ">
 
         
             
@@ -113,19 +106,19 @@ useEffect(()=>{
                
               
               <div className="border-solid border-2 bg-[#FFFAEB] border-[#FFC400]  flex items-center p-2 sm:mt-8  md:mt-12 lg:mt-1 lg:w-auto md:mb-6 ">
-                <div className='w-10' ><Image src={caution} alt="" /></div> <span className="text-xs ml-2">We are currently in process of restructuring the server and community</span>
+                <div className='w-10' ><Image src={caution} alt="" /></div> <span className="text-xs ml-2 xl:text-sm 2xl:text-base">We are currently in process of restructuring the server and community</span>
                 
               </div>
               <div>
                 <h1
-                className="mt-6 text-4xl font-bold font-futura text-black sm:mt-0 sm:text-4xl  md:text-4xl md:font-extrabold md:mt-5 lg:text-6xl lg:mt-10 ">
+                className="mt-6 text-5xl text-black sm:mt-0  md:mt-5 lg:text-6xl xl:text-7xl lg:mt-10 ">
               
                 Los Santos 
               </h1>
               </div>
               
               <div>
-                <p className="mt-0 text-4xl ml-10 font-bold font-futura text-black sm:mt-8  sm:text-4xl md:text-4xl md:font-extrabold md:mt-1 md:ml-20 lg:text-6xl lg:mt-2 lg:ml-24 ">
+                <p className="mt-0 text-5xl ml-10 font-bold  text-black sm:mt-8  sm:text-4xl md:text-4xl md:font-extrabold md:mt-1 md:ml-20 lg:text-6xl xl:text-7xl lg:mt-2 lg:ml-24 ">
                   Street Wars</p>
               </div>
                 
@@ -133,8 +126,8 @@ useEffect(()=>{
                 
               
             
-              <p className="mt-2 text-black font-timesnewroman sm:mt-4 sm:text-l md:mt-6 text-justify">
-                LS Street Wars is a gang wars game server on OpemMP formerly (SA:MP).
+              <p className="mt-2 text-black sm:mt-4 sm:text-l md:mt-6 text-justify  font-sans xl:text-xl">
+                LS Street Wars is a gang wars game server on OpenMP formerly (SA:MP).
                 Los Santos Street Wars is, and always, will be a community first and a game server second. 
                 We are dedicated to fostering an environment with a member-centric approach where all players
                 have equal potential for in game success and community recognition. Operating since 2011 LS Street Wars is one of the few remaining Gang Wars Server on SA:MP.
@@ -190,7 +183,7 @@ useEffect(()=>{
               </div>
               </div>
 
-                <div className="flex  items-center  mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 sm:mt-8 ">
+                <div className="flex  my-6  items-center  md:mt-3 pb-4  lg:mt-4   ">
              
                   
               
@@ -200,15 +193,15 @@ useEffect(()=>{
                 }
                 
                 {info?.maxplayers ?  <span className=' flex -mt-[5px]' >
-                    <p className="text-gray-600    text-xs  md:ml-1   ml-2  ">Server is Online.</p> 
+                    <p className="text-gray-600    text-xs  md:ml-1   ml-2 lg:text-base 2xl:text-lg  ">Server is Online.</p> 
                   
-                       <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1  lg:text-xs ">
-                        <span className="font-bold text-black"> {info?.online  + " / " + info?.maxplayers}</span> Players Online
+                       <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1    lg:text-base 2xl:text-lg ">
+                        <span className="font-bold bg-black text-white py-1 px-2 font-mono"> {info?.online  + " / " + info?.maxplayers}</span> Players Online
                       </p> 
                        </span>  
                         :<></>}
                    <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
-                    </div>
+                </div>
                    
                 
                 
@@ -223,16 +216,9 @@ useEffect(()=>{
           
         </div>
     </div>
-    <div 
- 
-    className="h-full w-full relative grayscale" 
-    
-    // onClick={() => {
-    //   setBg(randomIntFromInterval(1,4))
-    // }}
-    >
+    <div className="hidden md:block h-full w-full relative grayscale">
 
-  <Image 
+      <Image 
             src={bg === 1 ? hero1 : bg === 2 ? hero2 : bg === 3 ? hero3  : bg=== 4 ? hero4 : hero4  }
             layout="fill"
             objectPosition="center"
@@ -240,28 +226,15 @@ useEffect(()=>{
             className=' -z-50'
             quality={70}
             placeholder="blur"
-     />
+      />
       <div className=" hidden ml-[60%] mr-[20px] lg:flex object-right-top transform">
-
-         <Link  href="https://discord.gg/Zt6HnHbwRc" >
-        
-        <button className="btn bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8">
-         Join Discord
-        </button>
-        
-        </Link>
-        <Tippy
-                  content="Copied"
-
-                 
-                >
-        <button className="btn bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">
-          UCP
-        </button>
-        </Tippy>
+          <Link  href="https://discord.gg/Zt6HnHbwRc" >
+            <button className="btn bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8"> Join Discord</button>
+           </Link>
+          <Tippy  content="Coming Soon"  trigger='click'>
+            <button className="btn bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">UCP</button>
+          </Tippy>
       </div>
-    
-   
     </div>
   </div>
 </div>
