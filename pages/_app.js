@@ -41,8 +41,13 @@ function MyApp({ Component, pageProps }) {
 {   
    if(obj.maxplayers) 
    {
+    obj.version = obj.gamemode.split("v")[1]
+
     setInfo(obj)
+    console.log(obj)
+
     return setIsLoaded(true)
+   
    }
    else   return setIsLoaded(false) 
    
@@ -82,7 +87,7 @@ useEffect(()=>{
               <button className=" lg:hidden bg-black text-white text-xl font-bold border-white  p-3  sm:w-44 sm:mr-20 md:text-center md:w-36   md:mr-1 lg:w-72 lg:mr-10  h-14 mt-8">
                 Join Discord
               </button>
-              <Tippy content="Coming Soon">
+              <Tippy content="Coming Soon" trigger='click'>
               <button className="lg:hidden bg-white  border-2 border-black font-bold text-black text-xl w-28 sm:p-4 ml-10 mb-4 md:p-0  md:w-20 md:mb-0 md:ml-4 md:mr-6 md:mt-8 lg:w-28 lg:mb-0 lg:ml-0 lg:p-4 lg:mr-0 lg:mt-8  h-14 ">
                 UCP
               </button>
@@ -200,8 +205,9 @@ useEffect(()=>{
                       </p> 
                        </span>  
                         :<></>}
-                   <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
+                   
                 </div>
+               
                    
                 
                 
@@ -215,6 +221,7 @@ useEffect(()=>{
           </div>
           
         </div>
+        <span className="flex justify-center md:justify-end  mr-10 mb-6 text-gray-500 text-sm"> <Tooltip content="current gamemode version" color="invert" placement='top'> <>{info.version ? "v"+info.version :<></>}</></Tooltip></span>
     </div>
     <div className="hidden md:block h-full w-full relative grayscale">
 
