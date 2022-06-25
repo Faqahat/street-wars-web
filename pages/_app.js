@@ -12,6 +12,7 @@ import { useState ,useEffect } from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import Link from 'next/link';    
+import Head from 'next/head';
 import { BsArrowRight as Right } from 'react-icons/bs';
 
 function MyApp({ Component, pageProps }) {
@@ -59,7 +60,11 @@ useEffect(()=>{
 
   return (
 <div className="cursor-default h-screen">
-
+    <Head>
+    <link rel="icon" type="image/png" href="icons8-internet-doodle-96.png" />
+    
+    <title>Los Santos Street Wars</title>
+    </Head>
 
   <div className="grid md:grid-cols-2 lg:grid-cols-2 h-full">
   
@@ -124,7 +129,7 @@ useEffect(()=>{
                 Los Santos Street Wars is, and always, will be a community first and a game server second. 
                 We are dedicated to fostering an environment with a member-centric approach where all players
                 have equal potential for in game success and community recognition. Operating since 2011 LS Street Wars is one of the few remaining Gang Wars Server on SA:MP.
-                We plan to keep the server running for now and in the near future. We are closely following OpenMP community and in process of migrating our server to OpenMP. Join our discord server to stay updated. {bg}
+                We plan to keep the server running for now and in the near future. We are closely following OpenMP development and in process of migrating our server to OpenMP. Join our discord server to stay updated. {bg}
               </p>
               <p>
 
@@ -154,11 +159,12 @@ useEffect(()=>{
                     : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
                 }
                 
-               
-                    <p className="text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs">Server is Online.</p> 
+               <span className=' flex -mt-[5px]' >
+                    <p className="text-gray-600    text-xs  md:ml-1   ml-2  ">Server is Online.</p> 
                   
-                     <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1 lg:-mt-0.5 lg:text-xs"> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
-                    <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
+                     <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1  lg:text-xs "> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
+                     </span>  
+                   <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
                     </div>
                 
                 
