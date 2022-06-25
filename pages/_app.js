@@ -129,7 +129,7 @@ useEffect(()=>{
                 Los Santos Street Wars is, and always, will be a community first and a game server second. 
                 We are dedicated to fostering an environment with a member-centric approach where all players
                 have equal potential for in game success and community recognition. Operating since 2011 LS Street Wars is one of the few remaining Gang Wars Server on SA:MP.
-                We plan to keep the server running for now and in the near future. We are closely following OpenMP development and in process of migrating our server to OpenMP. Join our discord server to stay updated. {bg}
+                We plan to keep the server running for now and in the near future. We are closely following OpenMP development and in process of migrating our server to OpenMP. Join our discord server to stay updated.
               </p>
               <p>
 
@@ -159,13 +159,17 @@ useEffect(()=>{
                     : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
                 }
                 
-               <span className=' flex -mt-[5px]' >
+                {(info?.online && info?.online) ?  <span className=' flex -mt-[5px]' >
                     <p className="text-gray-600    text-xs  md:ml-1   ml-2  ">Server is Online.</p> 
                   
-                     <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1  lg:text-xs "> <span className="font-bold text-black"> {info?.online + " / " + info?.maxplayers}</span> Players Online</p>
-                     </span>  
+                       <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1  lg:text-xs ">
+                        <span className="font-bold text-black"> {info?.online  + " / " + info?.maxplayers}</span> Players Online
+                      </p> 
+                       </span>  
+                        :<></>}
                    <span className="text-gray-500 md:text-right hidden md:flex md:ml-32 md:text-xs md:mt-8 lg:hidden ">v16.8</span>
                     </div>
+                   
                 
                 
 
