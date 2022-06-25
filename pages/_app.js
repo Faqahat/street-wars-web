@@ -61,7 +61,7 @@ useEffect(()=>{
   return (
 <div className="cursor-default h-screen">
     <Head>
-    <link rel="icon" type="image/png" href="icons8-internet-doodle-96.png" />
+  
     
     <title>Los Santos Street Wars</title>
     </Head>
@@ -199,7 +199,7 @@ useEffect(()=>{
          <Link  href="https://discord.gg/Zt6HnHbwRc" >
         
         <button className="btn bg-black hover:bg-gray-700 text-white text-xl font-bold font-grotesk border-white  lg:w-60 lg:mr-10 h-14 mt-8">
-         Join Discords
+         Join Discord
         </button>
         
         </Link>
