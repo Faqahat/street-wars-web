@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     res.status(200).json(data)
   )
   .catch((e) => {
-    console.log(e)
+    console.log("aa"+e)
     return res.status(200).json("error")
   })
   
@@ -22,7 +22,7 @@ function query(options) {
   return new Promise((resolve, reject) => {
     if (typeof options === 'string') options.host = options
     options.port = options.port || 7777
-    options.timeout = options.timeout || 1000
+    options.timeout = options.timeout || 5000
 
     if (!options.host) return reject('Invalid port')
 

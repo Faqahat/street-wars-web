@@ -149,7 +149,7 @@ useEffect(()=>{
               <Tippy content="Connect to The Server">
                 <Link  href="samp://217.182.46.69:7777" >
                     <button
-                              className="  py-4   mb-5 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base md:text-2xl md:mb-4 lg:mt-6   ">
+                              className="  py-4   mb-4 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base md:text-2xl md:mb-4 lg:mt-6   ">
              
 
                     <span className=' flex justify-center items-center lg:text-lg md:text-sm sm:text-xs align-middle '>Connect Now <RightIcon className='ml-2 '/></span> 
@@ -170,6 +170,8 @@ useEffect(()=>{
                   content={"Copied"}
                   trigger="click"
                   color="invert"
+                  rounded={false}
+                  placement={"right"}
                  
                 >
               <CopyToClipboard text="217.182.46.69:7777">
@@ -188,7 +190,7 @@ useEffect(()=>{
               </div>
               </div>
 
-                <div className="flex  items-center  mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 ">
+                <div className="flex  items-center  mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 sm:mt-8 ">
              
                   
               
@@ -248,8 +250,11 @@ useEffect(()=>{
         </button>
         
         </Link>
-        <Tippy content= "Coming Soon" trigger='click' 
-        >
+        <Tippy
+                  content="Copied"
+
+                 
+                >
         <button className="btn bg-white  border-2 border-black font-bold font-grotesk text-black text-xl  lg:w-28 lg:mr-0 lg:mt-8  h-14 ">
           UCP
         </button>
