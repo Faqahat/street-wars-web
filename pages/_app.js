@@ -8,12 +8,16 @@ import caution from "../img/caution.png"
 import onlineIcon from "../img/onlineIcon.png"
 import loadingIcon from "../public/static/warning.png"
 import Image from 'next/image'
-import { useState ,useEffect } from "react";
+import { useState ,useEffect, useRef  } from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import 'tippy.js/themes/light.css';
 import Link from 'next/link';    
 import Head from 'next/head';
-import { BsArrowRight as Right } from 'react-icons/bs';
+import { BsArrowRight as RightIcon } from 'react-icons/bs';
+import { BiCopy as CopyIcon } from 'react-icons/bi';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { Tooltip, Button, Grid } from "@nextui-org/react";
 
 function MyApp({ Component, pageProps }) {
   function randomIntFromInterval(min, max) { // min and max included 
@@ -25,6 +29,11 @@ function MyApp({ Component, pageProps }) {
   let [bg,setBg] = useState(0)
   let [info,setInfo] = useState(false)
   let [isLoaded, setIsLoaded] = useState(true)
+
+
+  const selectRef = useRef(null);
+
+
  const fetchInfo = () =>{
   fetch("/api/info")
   .then(data => data.json())
@@ -40,7 +49,7 @@ function MyApp({ Component, pageProps }) {
   }
  )
  .catch(function(error) {
-    console.log(error)
+    //console.log(error)
 
     setIsLoaded(false)
     
@@ -134,14 +143,16 @@ useEffect(()=>{
               <p>
 
               </p>
+              <div className='flex'>
               <div className="mt-4 sm:mt-6  ">
+              <div className='md:flex'>
               <Tippy content="Connect to The Server">
                 <Link  href="samp://217.182.46.69:7777" >
                     <button
-                              className="  max-w-xl py-4   mb-5 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base sm:mr-32 md:text-2xl md:mb-4 lg:mt-6   ">
+                              className="  py-4   mb-5 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base md:text-2xl md:mb-4 lg:mt-6   ">
              
 
-                    <span className=' flex justify-center items-center lg:text-lg md:text-sm sm:text-xs align-middle '>Connect Now <Right className='ml-2 '/></span> 
+                    <span className=' flex justify-center items-center lg:text-lg md:text-sm sm:text-xs align-middle '>Connect Now <RightIcon className='ml-2 '/></span> 
                     
 
                     </button>
@@ -149,7 +160,34 @@ useEffect(()=>{
                   
                     
                 </Link>
-                </Tippy>
+              </Tippy>
+
+              <div className='flex  justify-left items-center '>
+              <span className='text-gray-400 mx-6'>or</span>  
+              
+              
+              <Tooltip
+                  content={"Copied"}
+                  trigger="click"
+                  color="invert"
+                 
+                >
+              <CopyToClipboard text="217.182.46.69:7777">
+
+                  
+                    <span ref={selectRef} className=' flex  underline decoration-dotted  underline-offset-4 text-gray-400 cursor-pointer hover:text-gray-700'>
+                      Copy IP address <CopyIcon  className='ml-1 mt-1 ' />
+                    </span>
+                  
+          
+             </CopyToClipboard> 
+             </Tooltip> 
+                 
+      
+              
+              </div>
+              </div>
+
                 <div className="flex  items-center  mt-3 ml-3 pb-4 md:mt-3  md:ml-1 lg:mt-4 lg:ml-3 ">
              
                   
@@ -159,7 +197,7 @@ useEffect(()=>{
                     : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
                 }
                 
-                {(info?.online && info?.online) ?  <span className=' flex -mt-[5px]' >
+                {info?.maxplayers ?  <span className=' flex -mt-[5px]' >
                     <p className="text-gray-600    text-xs  md:ml-1   ml-2  ">Server is Online.</p> 
                   
                        <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1  lg:text-xs ">
@@ -175,6 +213,9 @@ useEffect(()=>{
 
               
               </div>
+              
+              </div>
+            
             </div>
           </div>
           

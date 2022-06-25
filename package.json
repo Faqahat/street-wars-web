@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clayui/tooltip": "^3.58.0",
+    "@nextui-org/react": "^1.0.0-beta.9",
+    "@popperjs/core": "^2.11.5",
     "@tippyjs/react": "^4.2.6",
     "better-samp-query": "^0.1.5",
     "dgram": "^1.0.1",
@@ -16,8 +19,10 @@
     "next": "12.1.6",
     "react": "18.2.0",
     "react-cool-dimensions": "^2.0.7",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-popper": "^2.3.0",
     "sqr": "^1.0.1",
     "swr": "^1.3.0",
     "tippy.js": "^6.3.7"
