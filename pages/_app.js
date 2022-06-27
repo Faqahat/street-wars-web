@@ -73,7 +73,7 @@ useEffect(()=>{
  useEffect(() => setBg(randomIntFromInterval(1,4)),[])
 
   return (
-<div className="cursor-default h-screen  scrollbar-thin ">
+<div className="cursor-default h-screen  scrollbar-thin selection:bg-black selection:text-white " >
     <Head>
       <title>Los Santos Street Wars</title>
     </Head>
@@ -188,13 +188,13 @@ useEffect(()=>{
               </div>
               </div>
 
-                <div className="flex  my-6  items-center  md:mt-3 pb-4  lg:mt-4   ">
+                <div className="flex  my-6  items-center  md:mt-3 pb-4  lg:mt-6   ">
              
                   
               
                 {isLoaded ? 
-                      <span className= "w-4"> <Image  src={onlineIcon}   /></span> //yellow
-                    : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //green
+                      <span className= "w-4"> <Image  src={onlineIcon}   /></span> //green
+                    : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //yellow
                 }
                 
                 {info?.maxplayers ?  <span className=' flex -mt-[5px]' >
