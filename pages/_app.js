@@ -19,7 +19,7 @@ import { BiCopy as CopyIcon } from 'react-icons/bi';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Tooltip } from "@nextui-org/react";
 
-function MyApp({ Component, pageProps }) {
+function HomePage({ Component, pageProps }) {
   function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -73,12 +73,12 @@ useEffect(()=>{
  useEffect(() => setBg(randomIntFromInterval(1,4)),[])
 
   return (
-<div className="cursor-default h-screen  scrollbar-thin selection:bg-black selection:text-white " >
+<div className="cursor-default h-screen  scrollbar-thin selection:bg-black selection:text-white" >
     <Head>
       <title>Los Santos Street Wars</title>
     </Head>
   <div className="grid md:grid-cols-2  min-h-screen ">
-    <div className="col-span-1">
+    <div className="col-span-1 ">
         <img src="/static/logo.png" alt=""    className='h-24 mx-auto mt-6 lg:hidden md:mb-5'   /> 
         <div className="bg-white   ">
           <div className="max-w-full">
@@ -197,14 +197,15 @@ useEffect(()=>{
                     : <span className= "w-4"> <Image  src={loadingIcon}    /></span> //yellow
                 }
                 
-                {info?.maxplayers ?  <span className=' flex -mt-[5px]' >
+                {info?.maxplayers && isLoaded ?  <span className=' flex -mt-[5px]' >
                     <p className="text-gray-600    text-xs  md:ml-1   ml-2 lg:text-base 2xl:text-lg  ">Server is Online.</p> 
                   
                        <p className= "text-gray-600   ml-1 text-xs  md:ml-1  md:text-xs lg:ml-1    lg:text-base 2xl:text-lg ">
                         <span className="font-bold bg-black text-white py-1 px-2 font-mono"> {info?.online  + " / " + info?.maxplayers}</span> Players Online
                       </p> 
                        </span>  
-                        :<></>}
+                        :<span className='blur-md bg-neutral-400 ml-4 animate-pulse text-gray-600  text-xs  md:ml-1  md:text-xs lg:ml-1    lg:text-base 2xl:text-lg'>XXXXXXXXXXXXX 888/888 XXXXXXXXXX</span>
+                        } {/*Placeholder Blur*/}
                    
                 </div>
                
@@ -221,7 +222,7 @@ useEffect(()=>{
           </div>
           
         </div>
-        <span className="flex justify-center md:justify-end  mr-10 mb-6 text-gray-500 text-sm"> <Tooltip content="current gamemode version" color="invert" placement='top'> <>{info.version ? "v"+info.version :<></>}</></Tooltip></span>
+        <span className="flex justify-center md:justify-end  mr-10 mb-6 text-gray-500 text-sm"> <Tooltip content="current gamemode version" color="invert" placement='top'> <>{info.version ? "v"+info.version :<span className='blur-md bg-neutral-400'>v00.00.0</span>}</></Tooltip></span>
     </div>
     <div className="hidden md:block h-full w-full relative grayscale">
 
@@ -244,8 +245,11 @@ useEffect(()=>{
       </div>
     </div>
   </div>
+
+
+
 </div>
   )
 }
 
-export default MyApp
+export default HomePage
