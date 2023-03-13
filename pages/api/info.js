@@ -6,7 +6,7 @@ const dgram = require('dgram')
 
 
 export default async function handler(req, res) {
-  await query({host:"217.182.46.69"})
+  await query({host:"185.107.96.148"})
   .then((data) => 
     res.status(200).json(data)
   )
