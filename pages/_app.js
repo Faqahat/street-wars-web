@@ -145,7 +145,7 @@ useEffect(()=>{
               <div className="mt-4 sm:mt-6  ">
               <div className='md:flex'>
               <Tippy content="Connect to The Server">
-                <Link  href="samp://217.182.46.69:7777" >
+                <Link  href="samp://185.107.96.148:7777" >
                     <button
                               className="  py-4   mb-4 px-6 cursor-pointer  hover:bg-[#644d8a]  bg-[#6C5C86] font-semibold font-grotesk  text-2xl text-white  sm:text-base md:text-2xl md:mb-4 lg:mt-6   ">
              
@@ -172,7 +172,7 @@ useEffect(()=>{
                   placement={"right"}
                  
                 >
-              <CopyToClipboard text="217.182.46.69:7777">
+              <CopyToClipboard text="185.107.96.148:7777">
 
                   
                     <span ref={selectRef} className=' flex  underline decoration-dotted  underline-offset-4 text-gray-400 cursor-pointer hover:text-gray-700'>
