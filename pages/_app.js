@@ -111,7 +111,7 @@ useEffect(()=>{
                
               
               <div className="border-solid border-2 bg-[#FFFAEB] border-[#FFC400]  flex items-center p-2 sm:mt-8  md:mt-12 lg:mt-1 lg:w-auto md:mb-6 ">
-                <div className='w-10' ><Image src={caution} alt="" /></div> <span className="text-xs ml-2 xl:text-sm 2xl:text-base">Attention: Server IP updated due to hosting migration; database rolled back to December 10, 2021. - 17-03-23</span>
+                <div className='w-10' ><Image src={caution} alt="" /></div> <span className="text-xs ml-2 xl:text-sm 2xl:text-base"><strong>Attention:</strong> Server IP updated due to hosting migration; database rolled back to December 10, 2021. - <i>17-03-23</i> </span>
                 
               </div>
               <div>
