@@ -108,7 +108,7 @@ function HomePage({ Component, pageProps }) {
               <div className=" lg:px-0 ml-10 mr-10 lg:mr-24 ">
                 <br />
 
-                <p className=" text-black sm:text-l  text-justify  font-sans xl:text-xl">
+                <p className=" text-black sm:text-l py-6 text-justify  font-sans xl:text-xl">
                   LS Street Wars is a gang wars game server on OpenMP formerly
                   (SA:MP). Los Santos Street Wars is, and always, will be a
                   community first and a game server second. We are dedicated to
